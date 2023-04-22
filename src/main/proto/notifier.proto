@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option java_multiple_files = true;
+option java_package = "ch.ost.mas.cds.grpc.notifier";
+option java_outer_classname = "NotifierProto";
+option objc_class_prefix = "HLW";
+
+package notifier;
+
+// The greeting service definition.
+service Notifier {
+  // Sends a greeting
+  rpc GetName (google.protobuf.Empty) returns (NameReply) {}
+  rpc SendNote (NoteRequest) returns (NoteReply) {}
+}
+
+// The request note request with name and message.
+message NoteRequest {
+  string name = 1;
+  string message = 2; 
+}
+ 
+message NoteReply {
+    string message = 1; 
+}
+
+
+// The response message containing the Name
+message NameReply {
+  string name = 1;
+}
+
